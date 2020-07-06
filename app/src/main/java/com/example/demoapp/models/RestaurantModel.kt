@@ -19,7 +19,7 @@ class RestaurantModel {
 @Parcelize
 data class Nearby_restaurants (
 
-    val restaurant : Restaurant
+    val restaurant : Restaurant?
 ):Parcelable
 @Parcelize
 data class Restaurant(val apikey : String,
@@ -49,13 +49,12 @@ data class Restaurant(val apikey : String,
                       val store_type : String,
                       val include_bogo_offers : Boolean,
                       val deeplink : String,
-                      val order_url : String,
+                      val order_url : String?,
                       val order_deeplink : String,
                       val is_table_reservation_supported : Int,
                       val has_table_booking : Int,
                       val events_url : String
 ): Parcelable
-
 
 @Parcelize
 data class User_rating (
@@ -68,7 +67,6 @@ data class User_rating (
 
 @Parcelize
 data class Location (
-
     val address : String,
     val locality : String,
     val city : String,

@@ -36,7 +36,7 @@ class RestaurantListAdapter : RecyclerView.Adapter<RestaurantListAdapter.ViewHol
         fun bind(post:Nearby_restaurants){
 
             binding.viewModel = viewModel
-            viewModel.bind(post,binding)
+            viewModel.bind(post)
         }
     }
 }

@@ -26,6 +26,7 @@
                android:scaleType="center"
                android:src="@drawable/ic_dummy_restautant"
                app:layout_constraintLeft_toLeftOf="parent"
+               bind:imageUrl="@{viewModel.nearbyRestaurants.restaurant.featured_image}"
                app:layout_constraintRight_toRightOf="parent"
                android:adjustViewBounds="true"/>
           <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,16 +36,11 @@
               app:layout_constraintTop_toBottomOf="@+id/ivRestaurantImage">
               <TextView
                   android:id="@+id/tvRestaurantImage"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:textStyle="bold"
-                  android:textSize="@dimen/_13ssp"
-                  app:mutableText="@{viewModel.getName()}"
+                  android:text="@{viewModel.nearbyRestaurants.restaurant.name}"
                   app:layout_constraintTop_toTopOf="parent"
-                  android:shadowColor="@color/gray"
-                  android:shadowDx="-2"
-                  android:shadowDy="-2"
-                  android:shadowRadius="1"
+                  android:layout_width="wrap_content"
+                 style="@style/headerText"
+                  android:textColor="@color/black"
                   app:layout_constraintLeft_toLeftOf="parent"/>
 
               <RatingBar
@@ -52,7 +48,7 @@
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   style="?android:attr/ratingBarStyleSmall"
-                  android:rating="3.5"
+                  app:rating="@{viewModel.nearbyRestaurants.restaurant.user_rating.aggregate_rating}"
                   android:layout_marginTop="@dimen/_5sdp"
                   android:transformPivotY="0dp"
                   android:max="5"
@@ -60,37 +56,24 @@
                   app:layout_constraintTop_toBottomOf="@+id/tvRestaurantImage"/>
               <TextView
                   android:id="@+id/tvPersons"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-
+                  android:text="@{`Average Cost for two : ` + viewModel.nearbyRestaurants.restaurant.average_cost_for_two}"
                   app:layout_constraintLeft_toLeftOf="parent"
                   app:layout_constraintTop_toBottomOf="@+id/rating"
-                  android:shadowColor="@color/gray"
-                  android:shadowDx="-2"
-                  android:shadowDy="-2"
-                  android:shadowRadius="1"
+                  android:layout_width="wrap_content"
+                  style="@style/textSize_small"
                   android:layout_marginTop="@dimen/_5sdp"
                   android:textSize="@dimen/_10ssp"/>
               <TextView
                   android:id="@+id/tvLocation"
-                  android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-
                   app:layout_constraintLeft_toLeftOf="parent"
                   app:layout_constraintTop_toBottomOf="@+id/tvPersons"
-                  android:shadowColor="@color/gray"
-                  android:shadowDx="-2"
-                  android:shadowDy="-2"
-                  android:shadowRadius="1"
                   android:layout_marginTop="@dimen/_5sdp"
-                  android:textSize="@dimen/_10ssp"
+                  style="@style/textSize_small"
                   android:layout_marginBottom="@dimen/_5sdp"
                   app:layout_constraintBottom_toBottomOf="parent"
-                  app:mutableText="@{viewModel.getAddress()}" />
+                  android:text="@{viewModel.nearbyRestaurants.restaurant.location.address}"/>
           </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
        </androidx.constraintlayout.widget.ConstraintLayout>
    </androidx.cardview.widget.CardView>
 </layout>

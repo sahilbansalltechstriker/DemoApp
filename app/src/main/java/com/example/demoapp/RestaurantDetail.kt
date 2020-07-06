@@ -7,7 +7,6 @@ import com.example.demoapp.global.Constant
 
 import com.example.demoapp.models.Nearby_restaurants
 import com.example.demoapp.viewModels.RestaurantDetailViewModel
-import com.example.demoapp.viewModels.RestaurantListViewModel
 import net.gahfy.mvvmposts.injection.BaseViewModelFactory
 
 
@@ -32,12 +31,12 @@ class RestaurantDetail :BaseActivity<RestaurantDetailBinding>() {
 
         viewModel.updateMethod(nearbyRestaurant)
 
-
+        setToolBarWithTitle(true, nearbyRestaurant.restaurant!!.name)
 
     }
 
     override fun setSupportToolbar() {
-        setToolBarWithTitle(true, Constant.REGISTER)
+
     }
 
     override fun setLayout(): Int {
