@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.demoapp.viewModels.LoginViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/loginBkColor"
+        android:layout_height="match_parent">
+        <include layout="@layout/common_view_top"/>
+
+        <TextView
+            android:id="@+id/tvHeader"
+            style="@style/headerText"
+            android:layout_gravity="center"
+            android:text="@string/app_name"
+            android:textSize="@dimen/_20ssp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="@dimen/_35sdp"/>
+        <androidx.cardview.widget.CardView
+            style="@style/loginCard"
+
+            android:layout_marginTop="@dimen/_50sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            app:layout_constraintTop_toBottomOf="@+id/tvHeader"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <LinearLayout
+                style="@style/linearParent"
+                android:layout_gravity="center"
+                android:padding="@dimen/_10sdp">
+
+
+
+
+                <TextView
+                    style="@style/headerTextPrimary"
+                    android:text="Login"
+                    android:layout_marginTop="@dimen/_10sdp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputEmail"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/_10sdp">
+                    <EditText
+                        android:id="@+id/editTextEmail"
+                        style="@style/modifiedEditText"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:text="@={viewModel.email}"
+                        android:hint="@string/email"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputPassword"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/_10sdp">
+                    <EditText
+                        android:id="@+id/editTextPassword"
+                        style="@style/modifiedEditText"
+                        android:hint="@string/password"
+                        android:maxLines="1"
+                        android:text="@={viewModel.password}"
+                        android:inputType="textPassword"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/viewParent"
+                    android:text="Forgot Password?"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_gravity="end"
+                    android:onClick="@{viewModel::forgotPasswordListener}"
+
+                    android:layout_marginTop="10dp"/>
+
+
+                <Button
+                    android:id="@+id/cirLoginButton"
+                    style="@style/loginButton"
+                    android:text="Login"
+                    android:onClick="@{viewModel::loginListener}"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_10ssp"/>
+
+                <TextView
+                    style="@style/parent"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/primaryTextColor"
+                    android:text="@string/notMember"
+                    android:onClick="@{viewModel::signUpListener}"
+                    android:layout_marginTop="@dimen/_10ssp"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
+<!--
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.demoapp.viewModels.LoginViewModel"/>
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintLeft_toLeftOf="parent"
+       app:layout_constraintRight_toRightOf="parent"
+       android:layout_margin="@dimen/_10sdp">
+       <com.google.android.material.textfield.TextInputLayout
+           android:id="@+id/tiEmail"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+         app:layout_constraintTop_toTopOf="parent">
+
+           <EditText
+               android:id="@+id/etEmail"
+               android:layout_width="match_parent"
+               android:text="@={viewModel.email}"
+               android:layout_height="wrap_content"
+               android:hint="@string/email"/>
+
+       </com.google.android.material.textfield.TextInputLayout>
+       <com.google.android.material.textfield.TextInputLayout
+           android:id="@+id/tiPassword"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="@dimen/_10sdp"
+           app:layout_constraintTop_toBottomOf="@+id/tiEmail">
+           <EditText
+               android:id="@+id/etPassword"
+               android:text="@={viewModel.password}"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:hint="@string/password"/>
+       </com.google.android.material.textfield.TextInputLayout>
+
+       <TextView
+           android:id="@+id/tvForgotPassword"
+           app:layout_constraintEnd_toEndOf="@+id/tiPassword"
+           app:layout_constraintTop_toBottomOf="@+id/tiPassword"
+           android:textColor="@color/colorPrimary"
+           android:text="@string/forgotPassword"
+           android:onClick="@{viewModel::forgotPasswordListener}"
+           style="@style/textSize_small"/>
+
+       <Button
+           android:id="@+id/btnLogin"
+           style="@style/roundButton"
+           app:layout_constraintLeft_toLeftOf="parent"
+           app:layout_constraintRight_toRightOf="parent"
+           android:text="@string/login"
+           android:onClick="@{viewModel::loginListener}"
+           app:layout_constraintTop_toBottomOf="@+id/tvForgotPassword"/>
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           app:layout_constraintLeft_toLeftOf="parent"
+           app:layout_constraintRight_toRightOf="parent"
+           android:layout_marginTop="@dimen/_10sdp"
+           app:layout_constraintTop_toBottomOf="@+id/btnLogin">
+           <TextView
+               android:id="@+id/tvNotMember"
+               style="@style/textSize_small"
+               android:text="@string/notMember"/>
+           <TextView
+               android:id="@+id/tvSignUp"
+               android:textColor="@color/colorPrimary"
+               style="@style/textSize_small"
+               android:onClick="@{viewModel::signUpListener}"
+               android:text="@string/signUp"/>
+       </LinearLayout>
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>-->

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.demoapp.viewModels.RegisterViewModel"/>
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/loginBkColor"
+        android:layout_height="match_parent">
+        <include layout="@layout/common_view_top"/>
+        <include layout="@layout/toolbar"/>
+
+        <androidx.cardview.widget.CardView
+            style="@style/loginCard"
+
+
+            android:layout_marginTop="@dimen/_100sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <LinearLayout
+                style="@style/linearParent"
+                android:layout_gravity="center"
+                android:padding="@dimen/_10sdp">
+
+                <TextView
+                    style="@style/headerTextPrimary"
+                    android:text="@string/signUp"
+                    android:layout_marginTop="@dimen/_10sdp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/_10sdp">
+                    <EditText
+                        android:id="@+id/etRegisterUsername"
+                        style="@style/modifiedEditText"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:text="@={viewModel.username}"
+                        android:hint="@string/username"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/_10sdp">
+                    <EditText
+                        android:id="@+id/etRegisterEmail"
+                        style="@style/modifiedEditText"
+                        android:text="@={viewModel.email}"
+                        android:hint="@string/email"
+                        android:maxLines="1"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/_10sdp">
+                    <EditText
+                        android:id="@+id/etRegisterMobileNumber"
+                        style="@style/modifiedEditText"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.mobileNumber}"
+                        android:inputType="number"
+                        android:hint="@string/mobileNumber"
+                        android:maxLines="1"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/_10sdp">
+                    <EditText
+                        android:id="@+id/etRegisterPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.password}"
+                        android:inputType="textEmailAddress"
+                        android:hint="@string/password"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/_10sdp">
+                    <EditText
+                        style="@style/modifiedEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.confirmPassword}"
+                        android:inputType="textPassword"
+                        android:hint="@string/confirmPassword"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    style="@style/loginButton"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:onClick="@{viewModel::btnRegisterListener}"
+                    android:text="@string/register" />
+
+                <TextView
+                    style="@style/parent"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/primaryTextColor"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:onClick="@{viewModel::loginListener}"
+                    android:text="@string/alreadyMember"
+                    android:layout_marginTop="@dimen/_10sdp"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+   <!-- <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/toolbar"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_margin="@dimen/_10sdp">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tiRegisterUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/etRegisterUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@={viewModel.username}"
+                    android:hint="@string/username"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tiRegisterEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/tiRegisterUsername">
+
+                <EditText
+                    android:id="@+id/etRegisterEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@={viewModel.email}"
+                    android:hint="@string/email"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tiRegisterMobileNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/tiRegisterEmail">
+
+                <EditText
+                    android:id="@+id/etRegisterMobileNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@={viewModel.mobileNumber}"
+                    android:inputType="number"
+                    android:hint="@string/mobileNumber"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tiRegisterPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/tiRegisterMobileNumber">
+
+                <EditText
+                    android:id="@+id/etRegisterPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@={viewModel.password}"
+                    android:inputType="textPassword"
+                    android:hint="@string/password"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tiRegisterConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/tiRegisterPassword">
+
+                <EditText
+                    android:id="@+id/etRegisterConfirmPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@={viewModel.confirmPassword}"
+                    android:inputType="textPassword"
+                    android:hint="@string/email"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:id="@+id/btnRegister"
+                style="@style/roundButton"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="@string/send"
+                android:onClick="@{viewModel::btnRegisterListener}"
+                app:layout_constraintTop_toBottomOf="@+id/tiRegisterConfirmPassword"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@+id/btnRegister">
+                <TextView
+                    android:id="@+id/tvAlreadyMember"
+                    style="@style/textSize_small"
+                    android:text="@string/alreadyMember"/>
+                <TextView
+                    android:id="@+id/tvRegisterLogin"
+                    android:textColor="@color/colorPrimary"
+                    style="@style/textSize_small"
+                    android:onClick="@{viewModel::loginListener}"
+                    android:text="@string/login"/>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>-->
+</layout>
