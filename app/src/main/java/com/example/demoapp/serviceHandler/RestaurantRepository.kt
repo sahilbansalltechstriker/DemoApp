@@ -44,7 +44,5 @@ class RestaurantRepository {
         return mutableLiveData
     }
 
-    companion object {
-        private const val TAG = "EmployeeRepository"
-    }
+   
 }

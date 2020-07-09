@@ -13,8 +13,8 @@ import com.example.demoapp.global.toast
 
 class LoginViewModel  :ViewModel(){
     lateinit var activity: Activity
-     var email : String = ""
-     var password : String = ""
+     var email : String = "12"
+     var password : String = "12"
 
     //set activity reference for sending the context
     fun attach(activity: Activity) {

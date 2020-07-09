@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.demoapp.viewModels.CartViewItemModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp">
+
+        <ImageView
+            android:id="@+id/ivViewCartImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+
+            bind:imageUrl= "@{viewModel.viewCartModel.dailyMenuModel.image}"
+            app:layout_constraintDimensionRatio="1:1"
+            android:src="@drawable/ic_dummy_restautant"
+            app:layout_constraintWidth_percent="0.10"/>
+        <TextView
+            android:id="@+id/tvCartItem"
+            android:layout_width="0dp"
+            style="@style/textSize_small"
+            app:layout_constraintLeft_toRightOf="@+id/ivViewCartImage"
+            app:layout_constraintTop_toTopOf="@+id/ivViewCartImage"
+            app:layout_constraintBottom_toBottomOf="@+id/ivViewCartImage"
+            android:textSize="@dimen/_12ssp"
+            android:text="@{viewModel.viewCartModel.dailyMenuModel.name}"
+           android:layout_marginLeft="@dimen/_5sdp"
+            app:layout_constraintWidth_percent="0.45"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_30sdp"
+          android:gravity="center"
+            android:layout_marginRight="@dimen/_5sdp"
+            app:layout_constraintWidth_percent="0.25"
+            android:background="@drawable/border"
+            android:weightSum="3"
+            app:layout_constraintLeft_toRightOf="@+id/tvCartItem"
+            app:layout_constraintTop_toTopOf="@+id/ivViewCartImage"
+            app:layout_constraintBottom_toBottomOf="@+id/ivViewCartImage"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:onClick="@{viewModel::btnMinusViewCartHandler}"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="-" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorAccent"/>
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@{``+viewModel.viewCartModel.dailyMenuModel.selectedQuantity}"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="@{viewModel::btnPlusViewCartHandler}"
+                android:textSize="@dimen/_10ssp" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorAccent"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:background="@android:color/transparent"
+                android:text="+"/>
+
+        </LinearLayout>
+
+        <TextView
+
+            android:layout_width="0dp"
+            style="@style/textSize_small"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivViewCartImage"
+            app:layout_constraintBottom_toBottomOf="@+id/ivViewCartImage"
+            android:textSize="@dimen/_12ssp"
+            android:gravity="center"
+            android:text="@{``+viewModel.viewCartModel.dailyMenuModel.rate}"
+            android:layout_margin="@dimen/_5sdp"
+
+            app:layout_constraintWidth_percent="0.15"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

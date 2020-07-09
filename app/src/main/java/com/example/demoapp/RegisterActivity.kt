@@ -22,6 +22,7 @@ class RegisterActivity:BaseActivity<RegisterBinding>() {
         binding.viewModel = viewModel
         //set activity reference for sending the context
         viewModel.attach(this)
+
     }
 
     override fun setSupportToolbar() {

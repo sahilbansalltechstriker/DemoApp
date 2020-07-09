@@ -24,6 +24,8 @@
         <activity android:name=".ForgotPassword"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".RestaurantDetail"/>
+        <activity android:name=".DailyMenuActivity"/>
+        <activity android:name=".ViewCartActivity"/>
     </application>
 
 </manifest>

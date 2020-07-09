@@ -85,4 +85,10 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
 
+    implementation 'com.google.firebase:firebase-firestore-ktx:21.4.3'
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1'
+
 }
+apply plugin: 'com.google.gms.google-services'

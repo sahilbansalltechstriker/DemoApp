@@ -17,7 +17,7 @@ interface MyApi {
         "user-key: 3aa6f742adb2e30871ffb22f04eae8ce"
     )
     @GET("geocode?lat=30.7046&lon=76.7179")
-    fun getAllRestaurants(): Call<RestaurantModel>
+   fun getAllRestaurants(): Call<RestaurantModel>
 
 
 

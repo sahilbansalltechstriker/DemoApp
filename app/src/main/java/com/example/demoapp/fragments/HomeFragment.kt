@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.demoapp.DailyMenuActivity
 import com.example.demoapp.R
 import com.example.demoapp.RestaurantDetail
 import com.example.demoapp.databinding.HomeFragmentBinding
@@ -44,6 +45,8 @@ class HomeFragment : Fragment(){
         viewModel.errorMessage.observe(this, Observer {
                 errorMessage -> if(errorMessage != null) showError(errorMessage) else hideError()
         })
+
+
         binding.viewModel = viewModel
         var  view = binding?.root
         binding!!.rvList.addOnItemTouchListener(
@@ -54,7 +57,7 @@ class HomeFragment : Fragment(){
                     override fun onClick(view: View?, position: Int) {
 
                         var nearbyRestaurants = viewModel.restaurantListAdapter.restaurantList.get(position)
-                        var intent = Intent(activity, RestaurantDetail::class.java)
+                        var intent = Intent(activity, DailyMenuActivity::class.java)
                         intent.putExtra(Constant.OBJECT, nearbyRestaurants)
                         startActivity(intent)
 

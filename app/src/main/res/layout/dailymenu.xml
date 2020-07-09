@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.demoapp.viewModels.DailyMenuViewModel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+      <include layout="@layout/toolbar"/>
+        <androidx.recyclerview.widget.RecyclerView
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:adapter="@{viewModel.getDailyMenuAdapter()}"
+            android:id="@+id/rvDailyMenuList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnViewCart"/>
+        <RelativeLayout
+            android:id="@+id/btnViewCart"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:visibility="gone"
+            android:onClick="@{viewModel.viewCartEventHandler}"
+            app:mutableVisibility="@{viewModel.getLoadingVisibility()}"
+            android:background="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <TextView
+                style="@style/textSize_small"
+
+                app:mutableText="@{viewModel.getTotalPrice}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10ssp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/_10sdp"/>
+            <TextView
+                style="@style/textSize_small"
+                android:text="View Cart >"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10ssp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_10sdp"/>
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

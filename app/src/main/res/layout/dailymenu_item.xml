@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.demoapp.viewModels.DailyMenuItemViewModel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/white"
+            android:layout_margin="@dimen/_10sdp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/ivItemImage"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    android:src="@drawable/ic_dummy_restautant"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    bind:imageUrl= "@{viewModel.ocject.image}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:scaleType="fitXY"/>
+
+                <TextView
+                    android:id="@+id/tvItemName"
+                    android:layout_width="wrap_content"
+                    style="@style/headerText"
+                    app:layout_constraintLeft_toRightOf="@+id/ivItemImage"
+                    android:text="@{viewModel.ocject.name}"
+                    app:layout_constraintTop_toTopOf="@+id/ivItemImage"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="@dimen/_5sdp"/>
+                <TextView
+                    android:id="@+id/tvItemDescription"
+                    android:layout_width="0dp"
+                    style="@style/textSize_small"
+                    app:layout_constraintLeft_toRightOf="@+id/ivItemImage"
+app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    app:layout_constraintTop_toBottomOf="@+id/tvItemName"
+                    android:text="@{viewModel.ocject.description}"
+                    android:layout_margin="@dimen/_5sdp"/>
+                <TextView
+                    android:id="@+id/tvItemPrice"
+                    android:layout_width="wrap_content"
+                    style="@style/textSize_small"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    app:layout_constraintLeft_toRightOf="@+id/ivItemImage"
+                    android:text="@{`₹ `+viewModel.ocject.rate+`/-`}"
+                    app:layout_constraintTop_toBottomOf="@+id/tvItemDescription"/>
+                <TextView
+                    android:id="@+id/tvDiscount"
+                    android:layout_width="wrap_content"
+                    style="@style/textSize_small"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    app:layout_constraintLeft_toRightOf="@+id/ivItemImage"
+                    android:text="@{viewModel.ocject.discount+`% OFF`}"
+                    android:textSize="@dimen/_8ssp"
+                    android:textColor="@color/white"
+                    android:padding="@dimen/_2sdp"
+                    android:background="@drawable/button_back"
+                    app:layout_constraintTop_toBottomOf="@+id/tvItemPrice"/>
+                <RatingBar
+
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:max="5"
+                    android:id="@+id/tvItemRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:rating="@{viewModel.ocject.rating}"
+                    app:layout_constraintLeft_toRightOf="@+id/ivItemImage"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDiscount"
+                    android:layout_margin="@dimen/_5sdp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+            android:gravity="center"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    app:layout_constraintTop_toTopOf="@+id/tvItemRating"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvItemRating"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:onClick="@{viewModel::btnMinusListener}"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="-"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:textSize="@dimen/_10ssp"
+
+                        android:text="@={``+viewModel.ocject.selectedQuantity}"/>
+                    <Button
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:onClick="@{viewModel::btnPlusListener}"
+                        android:text="+"/>
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
